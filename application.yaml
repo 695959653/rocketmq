@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rocketmq
+  namespace: rocketmq
+spec:
+  project: default
+
+  source:
+    #repoURL: https://github.com/yangchuansheng/argocd-lab.git
+    repoURL: https://github.com/695959653/rocketmq.git
+    targetRevision: HEAD
+    path: v4.9.4
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: rocketmq
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

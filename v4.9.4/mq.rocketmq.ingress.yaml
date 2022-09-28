@@ -1,0 +1,24 @@
+﻿kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: mq
+  namespace: rocketmq
+  annotations:
+    kubesphere.io/creator: jiangsh
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - mq.zhengpino2o.com
+      secretName: jh202108
+  rules:
+    - host: mq.zhengpino2o.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: mq-cs
+                port:
+                  number: 8080
