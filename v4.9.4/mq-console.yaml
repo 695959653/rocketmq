@@ -21,7 +21,7 @@ metadata:
   name: mq-console
   namespace: rocketmq
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mq-console
